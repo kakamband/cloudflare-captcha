@@ -20,7 +20,6 @@ if cl.type == CaptchaType.hCaptcha:
 
 # submit captcha token and get the result
 user_agent, cf_clearance = cl.resolve(ct)
-
 print(user_agent, cf_clearance)
 ```
 
