@@ -21,7 +21,8 @@ if cl.type == CaptchaType.hCaptcha:
 # get result
 user_agent, cf_clearance = cl.resolve(ct)
 
-print(user_agent, cf_clearance)```
+print(user_agent, cf_clearance)
+```
 
 # Documentation
 
