@@ -59,7 +59,7 @@ class Cloudflare:
             raise Exception("Could not identify captcha on page")
 
     """
-    Submits captcha token, and returns user agent and cf_clearance cookie
+    Submits captcha token, and returns (user_agent, cf_clerance) tuple
     """
     def resolve(self, captcha_response: str) -> tuple:
         if self.type == CaptchaType.hCaptcha:
