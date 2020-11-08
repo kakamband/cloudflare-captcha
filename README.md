@@ -9,16 +9,16 @@ from twocaptcha import TwoCaptcha
 # create 2captcha session
 solver = TwoCaptcha("API_KEY")
 
-# create session
+# create cf session
 cl = Cloudflare(url="https://v3rmillion.net/",
                 proxy=None)
 
-# get token for captcha
+# request token from 2captcha
 if cl.type == CaptchaType.hCaptcha:
     ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
                          url=cl.url)["code"]
 
-# get result
+# submit captcha token and get the result
 user_agent, cf_clearance = cl.resolve(ct)
 
 print(user_agent, cf_clearance)
