@@ -14,7 +14,7 @@ from twocaptcha import TwoCaptcha
 solver = TwoCaptcha("API_KEY")
 
 # create cf session
-with Cloudflare(url="https://v3rmillion.net/", proxy=None) as cf:
+with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
   # request token from 2captcha
   if cf.type == CaptchaType.hCaptcha:
       ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
