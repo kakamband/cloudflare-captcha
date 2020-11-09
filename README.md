@@ -2,6 +2,7 @@
 Selenium-based module for solving a specific type of cloudflare captcha challenge.
 
 * I didn't get to test recaptcha detection, yet
+* Webdrivers may not be closing properly
 
 # Setup
 1. `pip install -r requirements.txt`
