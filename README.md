@@ -1,5 +1,5 @@
 # cloudflare-captcha
-Python3 module for solving a specific type of cloudflare captcha challenge.
+Selenium-based module for solving a specific type of cloudflare captcha challenge.
 
 # Setup
 1. `pip install -r requirements.txt`
