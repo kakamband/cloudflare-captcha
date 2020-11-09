@@ -20,10 +20,17 @@ with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
       ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
                            url=cf.url)["code"]
 
-  # submit captcha token and get the result
+  # submit captcha token and get credentials
   user_agent, cf_clearance = cf.resolve(ct)
 
-print(user_agent, cf_clearance)
+# send request to site using provided credentials
+with requests.Session() as s:
+    r = s.get(
+        url="https://v3rmillion.net/",
+        headers={"User-Agent": user_agent},
+        cookies={"cf_clearance": cf_clearance}
+    )
+    print(r.text)
 ```
 
 # Documentation
