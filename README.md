@@ -1,6 +1,10 @@
 # cloudflare-captcha
 Python module for solving a specific type of cloudflare captcha challenge.
 
+# Setup
+1. `pip install -r requirements.txt`
+2. Download the latest release of [geckodriver](https://github.com/mozilla/geckodriver/releases), and place it in the same folder as *captcha_cf.py*
+
 # Usage
 ```python
 from captcha_cf import Cloudflare, CaptchaType
