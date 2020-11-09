@@ -85,8 +85,9 @@ class Cloudflare:
                 document.querySelector(".challenge-form").submit()""", captcha_response)
             
         WebDriverWait(self._webdriver, self.timeout).until(EC.url_changes(self._webdriver.current_url))
+        
         user_agent = self._webdriver.execute_script("return navigator.userAgent")
         cf_clearance = self._webdriver.get_cookie("cf_clearance")["value"]
-        
         self.close()
+        
         return (user_agent, cf_clearance)
