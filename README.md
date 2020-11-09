@@ -18,8 +18,9 @@ solver = TwoCaptcha("API_KEY")
 with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
   # request token from 2captcha
   if cf.type == CaptchaType.hCaptcha:
-      ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
-                           url=cf.url)["code"]
+      ct = solver.hcaptcha(
+        sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
+        url=cf.url)["code"]
 
   # submit captcha token and get credentials
   user_agent, cf_clearance = cf.resolve(ct)
