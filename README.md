@@ -14,16 +14,15 @@ from twocaptcha import TwoCaptcha
 solver = TwoCaptcha("API_KEY")
 
 # create cf session
-cf = Cloudflare(url="https://v3rmillion.net/",
-                proxy=None)
+with Cloudflare(url="https://v3rmillion.net/", proxy=None) as cf:
+  # request token from 2captcha
+  if cf.type == CaptchaType.hCaptcha:
+      ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
+                           url=cf.url)["code"]
 
-# request token from 2captcha
-if cf.type == CaptchaType.hCaptcha:
-    ct = solver.hcaptcha(sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
-                         url=cf.url)["code"]
+  # submit captcha token and get the result
+  user_agent, cf_clearance = cf.resolve(ct)
 
-# submit captcha token and get the result
-user_agent, cf_clearance = cf.resolve(ct)
 print(user_agent, cf_clearance)
 ```
 
