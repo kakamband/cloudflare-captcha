@@ -15,7 +15,7 @@ This is only meant for solving a specific type of cloudflare challenge.
 If this doesn't work, you probably need to use a different module.
 """
 class Cloudflare:
-    def __init__(self, url, proxy=None, timeout=10):
+    def __init__(self, url, proxy=None, timeout=10, user_agent=None):
         self.url = url.rstrip("/") + "/robots.txt" # prob the lightest page to load
         self.timeout = timeout # used for page, element and redirect timeouts
         self.active = True
@@ -32,6 +32,8 @@ class Cloudflare:
         options.add_argument("-headless")
 
         profile = webdriver.FirefoxProfile()
+        if user_agent:
+            profile.set_preference("general.useragent.override", user_agent)
         # saves some time by not loading images and such
         profile.set_preference("permissions.default.stylesheet", 2)
         profile.set_preference("permissions.default.image", 2)
