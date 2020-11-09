@@ -9,6 +9,7 @@ Selenium-based module for solving a specific type of cloudflare captcha challeng
 ```python
 from captcha_cf import Cloudflare, CaptchaType
 from twocaptcha import TwoCaptcha
+import requests
 
 # create 2captcha session
 solver = TwoCaptcha("API_KEY")
