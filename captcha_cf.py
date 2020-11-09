@@ -63,13 +63,15 @@ class Cloudflare:
     """
     def resolve(self, captcha_response: str) -> tuple:
         if self.type == CaptchaType.hCaptcha:
-            self._webdriver.execute_script(f"""
+            self._webdriver.execute_script("""
                 document.querySelector("[name=h-captcha-response]").innerText = arguments[0]
                 document.querySelector(".challenge-form").submit()""", captcha_response)
-        else:
+            
+        elif self.type == CaptchaType.ReCaptchaV2:
             self._webdriver.execute_script("""
                 document.querySelector("[name=g-recaptcha-response]").innerText = arguments[0]
                 document.querySelector(".challenge-form").submit()""", captcha_response)
+            
         WebDriverWait(self._webdriver, self.timeout).until(EC.url_changes(self._webdriver.current_url))
         return self._webdriver.execute_script("return navigator.userAgent"), \
             self._webdriver.get_cookie("cf_clearance")["value"]
