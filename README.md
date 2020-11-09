@@ -35,7 +35,7 @@ with requests.Session() as s:
 
 # Documentation
 
-## Cloudflare(url, proxy=None, timeout=10)
+## Cloudflare(url, proxy=None, timeout=10, user_agent=None)
 Starts up a headless selenium instance, and loads the webpage.
 
 ## Cloudflare.resolve(captcha_response)
