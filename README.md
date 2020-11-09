@@ -26,11 +26,10 @@ with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
 
 # send request to site using provided credentials
 with requests.Session() as s:
-    r = s.get(
-        url="https://v3rmillion.net/",
-        headers={"User-Agent": user_agent},
-        cookies={"cf_clearance": cf_clearance}
-    )
+    s.headers = {"User-Agent": user_agent}
+    s.cookies = {"cf_clearance": cf_clearance}
+
+    r = s.get("https://v3rmillion.net/")
     print(r.text)
 ```
 
