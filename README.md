@@ -22,7 +22,6 @@ with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
    
   user_agent, cf_clearance = cf.resolve(captcha_token)
 
-# send request to site using provided credentials
 with requests.Session() as s:
     s.headers.update({"User-Agent": user_agent})
     s.cookies.update({"cf_clearance": cf_clearance})
