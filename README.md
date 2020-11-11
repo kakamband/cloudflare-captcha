@@ -14,16 +14,14 @@ import requests
 # create 2captcha session
 solver = TwoCaptcha("API_KEY")
 
-# create cf session
 with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
   # request token from 2captcha
   if cf.type == CaptchaType.hCaptcha:
-      ct = solver.hcaptcha(
+      captcha_token = solver.hcaptcha(
         sitekey="45fbc4de-366c-40ef-9274-9f3feca1cd6c",
         url=cf.url)["code"]
-
-  # submit captcha token and get credentials
-  user_agent, cf_clearance = cf.resolve(ct)
+   
+  user_agent, cf_clearance = cf.resolve(captcha_token)
 
 # send request to site using provided credentials
 with requests.Session() as s:
