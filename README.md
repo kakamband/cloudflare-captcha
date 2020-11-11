@@ -11,7 +11,6 @@ from captcha_cf import Cloudflare, CaptchaType
 from twocaptcha import TwoCaptcha
 import requests
 
-# create 2captcha session
 solver = TwoCaptcha("API_KEY")
 
 with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
