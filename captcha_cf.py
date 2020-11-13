@@ -44,6 +44,8 @@ class Cloudflare:
             desired_capabilities=dc
         )
         self._webdriver.set_page_load_timeout(self.timeout)
+        
+    def setup(self):
         self._webdriver.get(self.url)
 
         self.type = self._captcha_type()
