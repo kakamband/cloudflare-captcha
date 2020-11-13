@@ -14,6 +14,7 @@ import requests
 solver = TwoCaptcha("API_KEY")
 
 with Cloudflare("https://v3rmillion.net/", proxy=None) as cf:
+  cf.setup()
   # request token from 2captcha
   if cf.type == CaptchaType.hCaptcha:
       captcha_token = solver.hcaptcha(
